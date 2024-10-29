@@ -1,12 +1,12 @@
-const mongose=require('mongoose')
-const colors=require('colors')
-const connectDb=async()=>{
-    try{
-        await mongose.connect(process.env.MONGO_URL);
-        console.log(`DB connected`);
+const mongoose = require('mongoose');
+
+const connectDb = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+        console.log('Database connected successfully');
+    } catch (error) {
+        console.error('Database connection error:', error);
     }
-    catch(error){
-        console.log(error)
-    }
-}
-module.exports=connectDb
+};
+
+module.exports = connectDb;
